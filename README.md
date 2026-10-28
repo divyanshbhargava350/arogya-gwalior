@@ -2,6 +2,8 @@
 ### Agentic Healthcare Intelligence & AI Platform for Gwalior, Madhya Pradesh & India
 *Finds the RIGHT facility at THIS moment, not just the nearest one.*
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/divyanshbhargava350/arogya-gwalior)
+
 ---
 
 ## ⚡ Quick Start (Setup in 3 Commands)
