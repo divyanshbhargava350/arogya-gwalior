@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · Arogya Gwalior</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:#f0fdf4;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0f172a;display:flex;justify-content:center;padding:16px}
+  .card{width:100%;max-width:860px;background:#fff;border-radius:16px;padding:26px;box-shadow:0 8px 30px rgba(0,0,0,.08);align-self:flex-start;margin-top:24px}
+  h1{margin:0 0 4px;font-size:21px;color:#15803d} p.sub{margin:0 0 16px;color:#64748b;font-size:14px}
+  input{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px}
+  .go{margin-top:12px;padding:11px 18px;border:0;border-radius:10px;background:#16a34a;color:#fff;font-weight:600;cursor:pointer}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+  th{color:#64748b;font-weight:600}
+  .st{font-weight:700;border-radius:6px;padding:2px 8px;font-size:12px}
+  .pending{background:#fef3c7;color:#92400e}.approved{background:#dcfce7;color:#166534}.rejected{background:#fee2e2;color:#991b1b}
+  .b{border:0;border-radius:8px;padding:6px 10px;font-weight:600;cursor:pointer;margin-right:4px}
+  .ap{background:#16a34a;color:#fff}.rj{background:#fee2e2;color:#b91c1c}
+  .top{display:flex;justify-content:space-between;align-items:center}
+  .stats{display:flex;gap:14px;margin:12px 0;flex-wrap:wrap}
+  .stat{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 14px;font-size:13px}.stat b{display:block;font-size:20px;color:#15803d}
+  .err{color:#b91c1c;font-size:13px;margin-top:10px;min-height:18px}
+  .wrap{overflow-x:auto} [hidden]{display:none!important}
+  .roles{display:flex;gap:6px;margin:0 0 18px;padding:4px;background:#f1f5f9;border-radius:12px}
+  .roles a{flex:1;text-align:center;padding:9px 6px;border-radius:9px;font-size:14px;font-weight:600;text-decoration:none;color:#475569}
+  .roles a.on{background:#16a34a;color:#fff}
+  .logo{display:block;margin:0 auto 14px;width:150px;max-width:60%;height:auto}
+</style>
+</head>
+<body>
+<div class="card">
+  <div id="lg">
+    <div class="roles"><a href="/login">👤 Patient</a><a href="/hospital">🏥 Hospital</a><a href="/admin" class="on">🛡️ Admin</a></div>
+  <img class="logo" src="/logo.png" alt="Arogya Gwalior">
+    <h1>🛡️ Admin</h1><p class="sub">Arogya Gwalior admin login</p>
+    <form id="f"><input id="pw" type="password" placeholder="Admin password" required><button class="go" type="submit">Login</button></form>
+    <div class="err" id="e"></div>
+  </div>
+  <div id="ds" hidden>
+    <div class="top"><div><h1>🛡️ Admin · Hospital accounts</h1><p class="sub">Approve hospital staff before they can update data</p></div>
+      <button class="b rj" id="out">Logout</button></div>
+    <div class="stats"><div class="stat"><b id="s1">0</b>Hospitals with live data</div><div class="stat"><b id="s2">0</b>Pending approvals</div></div>
+    <div class="wrap"><table><thead><tr><th>Hospital</th><th>Contact</th><th>Status</th><th>Last live update</th><th>Action</th></tr></thead><tbody id="tb"></tbody></table></div>
+    <div class="err" id="m"></div>
+  </div>
+</div>
+<script>
+const $ = id => document.getElementById(id), KEY = 'arogya_admin_token';
+const get = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+const set = v => { try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); } catch (e) {} };
+async function api(path, method, body) {
+  const t = get();
+  const r = await fetch(path, { method: method || 'GET', headers: Object.assign({ 'Content-Type': 'application/json' }, t ? { Authorization: 'Bearer ' + t } : {}), body: body ? JSON.stringify(body) : undefined });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(typeof d.detail === 'string' ? d.detail : 'Error'); e.status = r.status; throw e; }
+  return d;
+}
+function cell(tr, text, cls) { const td = document.createElement('td'); if (cls) { const s = document.createElement('span'); s.className = 'st ' + cls; s.textContent = text; td.appendChild(s); } else td.textContent = text; tr.appendChild(td); return td; }
+async function load() {
+  try {
+    const d = await api('/api/admin/hospitals');
+    $('lg').hidden = true; $('ds').hidden = false;
+    $('s1').textContent = d.hospitals_with_live_data + ' / ' + d.hospitals_total;
+    $('s2').textContent = d.accounts.filter(a => a.status === 'pending').length;
+    const tb = $('tb'); tb.innerHTML = '';
+    d.accounts.forEach(a => {
+      const tr = document.createElement('tr');
+      cell(tr, a.hospital); cell(tr, a.contact_name + ' · ' + (a.phone || a.email)); cell(tr, a.status, a.status);
+      cell(tr, a.last_update || '—');
+      const td = document.createElement('td');
+      [['approved', 'Approve', 'ap'], ['rejected', 'Reject', 'rj']].forEach(([s, label, c]) => {
+        if (a.status === s) return;
+        const b = document.createElement('button'); b.className = 'b ' + c; b.textContent = label;
+        b.onclick = async () => { await api('/api/admin/account/' + a.id + '/status', 'POST', { status: s }); load(); };
+        td.appendChild(b);
+      });
+      tr.appendChild(td); tb.appendChild(tr);
+    });
+    if (!d.accounts.length) { const tr = document.createElement('tr'); const td = cell(tr, 'No hospital registrations yet.'); td.colSpan = 5; tb.appendChild(tr); }
+  } catch (x) { if (x.status === 401) { set(null); $('lg').hidden = false; $('ds').hidden = true; } else $('m').textContent = x.message; }
+}
+$('f').onsubmit = async e => { e.preventDefault(); $('e').textContent = '';
+  try { const d = await api('/api/admin/login', 'POST', { password: $('pw').value }); set(d.token); load(); } catch (x) { $('e').textContent = x.message; } };
+$('out').onclick = () => api('/api/admin/logout', 'POST').finally(() => { set(null); location.reload(); });
+if (get()) load();
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital Portal · Arogya Gwalior</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:#f0fdf4;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0f172a;display:flex;justify-content:center;padding:16px}
+  .card{width:100%;max-width:520px;background:#fff;border-radius:16px;padding:26px;box-shadow:0 8px 30px rgba(0,0,0,.08);align-self:flex-start;margin-top:24px}
+  h1{margin:0 0 4px;font-size:21px;color:#15803d} p.sub{margin:0 0 16px;color:#64748b;font-size:14px}
+  label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px}
+  input,select{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;background:#fff}
+  input:focus,select:focus{outline:2px solid #86efac;border-color:#22c55e}
+  .tabs{display:flex;gap:8px;margin-bottom:6px}
+  .tabs button{flex:1;padding:9px;border:1px solid #cbd5e1;background:#fff;border-radius:10px;font-weight:600;cursor:pointer}
+  .tabs button.on{background:#16a34a;color:#fff;border-color:#16a34a}
+  .go{width:100%;margin-top:18px;padding:12px;border:0;border-radius:10px;background:#16a34a;color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+  .go:disabled{opacity:.6}
+  .msg{margin-top:12px;font-size:13px;min-height:18px}.err{color:#b91c1c}.ok{color:#15803d}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .tog{display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0}
+  .tog input{width:auto;transform:scale(1.4)} .tog span{font-weight:600}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .out{background:#fee2e2;color:#b91c1c;border:0;border-radius:8px;padding:7px 12px;font-weight:600;cursor:pointer}
+  .badge{display:inline-block;font-size:12px;background:#dcfce7;color:#166534;border-radius:6px;padding:2px 8px;margin-top:4px}
+  .hint{font-size:12px;color:#64748b;margin-top:3px}
+  [hidden]{display:none!important}
+  .roles{display:flex;gap:6px;margin:0 0 18px;padding:4px;background:#f1f5f9;border-radius:12px}
+  .roles a{flex:1;text-align:center;padding:9px 6px;border-radius:9px;font-size:14px;font-weight:600;text-decoration:none;color:#475569}
+  .roles a.on{background:#16a34a;color:#fff}
+  .logo{display:block;margin:0 auto 14px;width:150px;max-width:60%;height:auto}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- Login / Register -->
+  <div id="auth">
+    <div class="roles"><a href="/login">👤 Patient</a><a href="/hospital" class="on">🏥 Hospital</a><a href="/admin">🛡️ Admin</a></div>
+  <img class="logo" src="/logo.png" alt="Arogya Gwalior">
+    <h1>🏥 Hospital Portal</h1>
+    <p class="sub">Update your hospital's live status for patients / अपने अस्पताल की जानकारी अपडेट करें</p>
+    <div class="tabs"><button id="tL" class="on" type="button">Login</button><button id="tR" type="button">Register</button></div>
+
+    <form id="fL">
+      <label>Phone or Email</label><input id="lg" autocomplete="username" required>
+      <label>Password</label><input id="lp" type="password" autocomplete="current-password" required>
+      <button class="go" type="submit">Login</button>
+    </form>
+
+    <form id="fR" hidden>
+      <label>Your hospital</label><select id="rh" required></select>
+      <label>Contact person name</label><input id="rn" required>
+      <label>Phone (10 digit)</label><input id="rp" inputmode="tel">
+      <label>or Email</label><input id="re" type="email">
+      <label>Password (min 6)</label><input id="rw" type="password" autocomplete="new-password" required>
+      <button class="go" type="submit">Register</button>
+      <div class="hint">After registering, admin will approve your account. Then you can login.</div>
+    </form>
+    <div class="msg" id="am"></div>
+    <div class="hint" style="margin-top:14px"><a href="/">← Patient site</a></div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dash" hidden>
+    <div class="top">
+      <div><h1 id="hn"></h1><span class="badge" id="who"></span></div>
+      <button class="out" id="out">Logout</button>
+    </div>
+    <p class="sub" id="last" style="margin-top:10px"></p>
+
+    <div class="tog"><input type="checkbox" id="er"><span>Emergency / ER is OPEN</span></div>
+
+    <label>Free beds / खाली बेड</label>
+    <div class="grid3">
+      <div><input id="bg" type="number" min="0" max="9999" placeholder="General"><div class="hint">General</div></div>
+      <div><input id="bi" type="number" min="0" max="9999" placeholder="ICU"><div class="hint">ICU</div></div>
+      <div><input id="bv" type="number" min="0" max="9999" placeholder="Vent."><div class="hint">Ventilator</div></div>
+    </div>
+
+    <label>Doctors on duty today / आज उपलब्ध डॉक्टर</label>
+    <input id="dr" maxlength="200" placeholder="e.g. 2 Surgeons, 1 Anaesthetist, 1 Cardiologist">
+    <label>Phone / फोन</label><input id="ph" maxlength="30">
+    <label>Timings / समय</label><input id="hr" maxlength="100" placeholder="OPD 9 AM - 8 PM | Emergency 24 hrs">
+    <div class="tog"><input type="checkbox" id="ay"><span>Ayushman Bharat accepted</span></div>
+
+    <button class="go" id="save">Save &amp; show to patients</button>
+    <div class="msg" id="dm"></div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const KEY = 'arogya_hosp_token';
+const get = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+const set = v => { try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); } catch (e) {} };
+const msg = (el, t, ok) => { el.textContent = t; el.className = 'msg ' + (ok ? 'ok' : 'err'); };
+async function api(path, method, body, tok) {
+  const r = await fetch(path, { method: method || 'GET',
+    headers: Object.assign({ 'Content-Type': 'application/json' }, tok ? { Authorization: 'Bearer ' + tok } : {}),
+    body: body ? JSON.stringify(body) : undefined });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(typeof d.detail === 'string' ? d.detail : 'Something went wrong'); e.status = r.status; throw e; }
+  return d;
+}
+function tab(reg) { $('fL').hidden = reg; $('fR').hidden = !reg; $('tL').className = reg ? '' : 'on'; $('tR').className = reg ? 'on' : ''; $('am').textContent = ''; }
+$('tL').onclick = () => tab(false); $('tR').onclick = () => tab(true);
+
+api('/api/hospital/list').then(l => { $('rh').innerHTML = '<option value="">-- select --</option>' + l.map(h => '<option value="' + h.id + '"></option>').join(''); 
+  [...$('rh').options].slice(1).forEach((o, i) => o.textContent = l[i].name); });
+
+$('fL').onsubmit = async e => { e.preventDefault(); msg($('am'), '', 1);
+  try { const d = await api('/api/hospital/login', 'POST', { login: $('lg').value, password: $('lp').value }); set(d.token); load(); }
+  catch (x) { msg($('am'), x.message); } };
+$('fR').onsubmit = async e => { e.preventDefault(); msg($('am'), '', 1);
+  try { const d = await api('/api/hospital/register', 'POST', { hospital_id: $('rh').value, contact_name: $('rn').value,
+      phone: $('rp').value, email: $('re').value, password: $('rw').value });
+    msg($('am'), d.message, true); tab(false); msg($('am'), d.message, true); }
+  catch (x) { msg($('am'), x.message); } };
+
+function fill(d) {
+  $('auth').hidden = true; $('dash').hidden = false;
+  $('hn').textContent = d.hospital.name; $('who').textContent = d.account.contact_name;
+  const l = d.live || {};
+  $('er').checked = l.er_open === 1; $('ay').checked = l.ayushman === 1;
+  $('bg').value = l.beds_general ?? ''; $('bi').value = l.beds_icu ?? ''; $('bv').value = l.beds_vent ?? '';
+  $('dr').value = l.doctors || ''; $('ph').value = l.phone || ''; $('hr').value = l.hours || '';
+  $('last').textContent = l.updated_at ? 'Last updated: ' + l.updated_at + ' — please update at least every few hours.' : 'Not updated yet. Fill the details below.';
+}
+function load() {
+  const t = get(); if (!t) return;
+  api('/api/hospital/me', 'GET', null, t).then(fill).catch(() => { set(null); $('auth').hidden = false; $('dash').hidden = true; });
+}
+const num = v => v === '' ? null : parseInt(v, 10);
+$('save').onclick = async () => { const b = $('save'); b.disabled = true; msg($('dm'), '', 1);
+  try { const d = await api('/api/hospital/update', 'PUT', { er_open: $('er').checked, beds_general: num($('bg').value),
+      beds_icu: num($('bi').value), beds_vent: num($('bv').value), doctors: $('dr').value, phone: $('ph').value,
+      hours: $('hr').value, ayushman: $('ay').checked }, get());
+    msg($('dm'), '✔ Saved. Patients can now see this.', true); $('last').textContent = 'Last updated: ' + d.updated_at; }
+  catch (x) { msg($('dm'), x.message); if (x.status === 401) { set(null); location.reload(); } } b.disabled = false; };
+$('out').onclick = () => api('/api/hospital/logout', 'POST', null, get()).finally(() => { set(null); location.reload(); });
+load();
+</script>
+</body>
+</html>

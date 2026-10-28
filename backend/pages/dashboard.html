@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard · Arogya Gwalior</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f0fdf4;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0f172a}
+  .card{width:100%;max-width:420px;margin:16px;background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+  h1{margin:0 0 2px;font-size:22px;color:#15803d}
+  p.sub{margin:0 0 18px;color:#64748b;font-size:14px}
+  dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:10px 8px;font-size:14px}
+  dt{color:#64748b} dd{margin:0;font-weight:600;word-break:break-all}
+  .row{display:flex;gap:10px;margin-top:24px}
+  a.btn,button{flex:1;text-align:center;padding:11px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;border:0}
+  a.btn{background:#16a34a;color:#fff} button{background:#fee2e2;color:#b91c1c}
+  .logo{display:block;margin:0 auto 14px;width:150px;max-width:60%;height:auto}
+</style>
+</head>
+<body>
+<div class="card" id="c" hidden>
+  <img class="logo" src="/logo.png" alt="Arogya Gwalior">
+  <h1 id="hello"></h1>
+  <p class="sub">Your account / आपका खाता</p>
+  <dl>
+    <dt>Name</dt><dd id="n"></dd>
+    <dt>Phone</dt><dd id="p"></dd>
+    <dt>Email</dt><dd id="e"></dd>
+    <dt>Member since</dt><dd id="s"></dd>
+    <dt>Last login</dt><dd id="l"></dd>
+    <dt>Logins</dt><dd id="k"></dd>
+  </dl>
+  <div class="row">
+    <a class="btn" href="/">Open Arogya</a>
+    <button id="out">Logout</button>
+  </div>
+</div>
+<script>
+const tok = (() => { try { return localStorage.getItem('arogya_token'); } catch(e) { return null; } })();
+const toLogin = () => { try { localStorage.removeItem('arogya_token'); } catch(e) {} location.replace('/login'); };
+const H = {Authorization: 'Bearer ' + tok};
+if (!tok) toLogin();
+else fetch('/api/auth/me', {headers: H}).then(r => r.ok ? r.json() : Promise.reject()).then(d => {
+  const u = d.user, $ = id => document.getElementById(id);
+  $('hello').textContent = 'Namaste, ' + u.name + ' 🙏';
+  $('n').textContent = u.name; $('p').textContent = u.phone || '—'; $('e').textContent = u.email || '—';
+  $('s').textContent = u.created_at; $('l').textContent = u.last_login; $('k').textContent = u.login_count;
+  $('c').hidden = false;
+}).catch(toLogin);
+document.getElementById('out').onclick = () =>
+  fetch('/api/auth/logout', {method: 'POST', headers: H}).finally(toLogin);
+</script>
+</body>
+</html>

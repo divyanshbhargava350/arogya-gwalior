@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>आरोग्य ग्वालियर (Arogya Gwalior) | 24x7 Gwalior Healthcare & Emergency Navigator</title>
+    <!-- Google Fonts for Indian Craft + High-tech Medicine -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Kalam:wght@400;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&family=Tiro+Devanagari+Hindi&family=Yatra+One&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-stone-50 text-stone-900 transition-colors duration-200">
+    <script>
+      // Login required: no/invalid token -> /login
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('arogya_token'); } catch (e) {}
+        if (!t) { location.replace('/login'); return; }
+        fetch('/api/auth/me', { headers: { Authorization: 'Bearer ' + t } })
+          .then(function (r) {
+            if (r.status === 401) { try { localStorage.removeItem('arogya_token'); } catch (e) {} location.replace('/login'); }
+          }).catch(function () {});
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

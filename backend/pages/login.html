@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login · Arogya Gwalior</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f0fdf4;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#0f172a}
+  .card{width:100%;max-width:380px;margin:16px;background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+  h1{margin:0 0 4px;font-size:22px;color:#15803d}
+  p.sub{margin:0 0 20px;color:#64748b;font-size:14px}
+  label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px}
+  input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px}
+  input:focus{outline:2px solid #86efac;border-color:#22c55e}
+  .or{text-align:center;color:#94a3b8;font-size:12px;margin:10px 0 0}
+  button{width:100%;margin-top:20px;padding:12px;border:0;border-radius:10px;background:#16a34a;color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+  button:disabled{opacity:.6}
+  .err{margin-top:12px;color:#b91c1c;font-size:13px;min-height:18px}
+  .roles{display:flex;gap:6px;margin:0 0 18px;padding:4px;background:#f1f5f9;border-radius:12px}
+  .roles a{flex:1;text-align:center;padding:9px 6px;border-radius:9px;font-size:14px;font-weight:600;text-decoration:none;color:#475569}
+  .roles a.on{background:#16a34a;color:#fff}
+  .logo{display:block;margin:0 auto 14px;width:150px;max-width:60%;height:auto}
+</style>
+</head>
+<body>
+<form class="card" id="f">
+  <div class="roles"><a href="/login" class="on">👤 Patient</a><a href="/hospital">🏥 Hospital</a><a href="/admin">🛡️ Admin</a></div>
+  <img class="logo" src="/logo.png" alt="Arogya Gwalior">
+  <h1>🌿 Arogya Gwalior</h1>
+  <p class="sub">Login / लॉगिन — name and phone or email</p>
+  <label for="name">Name / नाम</label>
+  <input id="name" autocomplete="name" required>
+  <label for="phone">Phone / मोबाइल</label>
+  <input id="phone" inputmode="tel" autocomplete="tel" placeholder="98260 12345">
+  <div class="or">— or / या —</div>
+  <label for="email">Email / ईमेल</label>
+  <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
+  <button id="b" type="submit">Login</button>
+  <div class="err" id="err"></div>
+</form>
+<script>
+try { if (localStorage.getItem('arogya_token')) location.replace('/'); } catch(e) {}
+document.getElementById('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const b = document.getElementById('b'), err = document.getElementById('err');
+  err.textContent = ''; b.disabled = true;
+  try {
+    const r = await fetch('/api/auth/login', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value
+      })
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(typeof d.detail === 'string' ? d.detail : 'Login failed');
+    localStorage.setItem('arogya_token', d.token);
+    location.href = '/';
+  } catch (ex) { err.textContent = ex.message; b.disabled = false; }
+});
+</script>
+</body>
+</html>

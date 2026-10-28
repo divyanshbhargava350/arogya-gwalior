@@ -1,0 +1,73 @@
+facility_id,name,notes_source,simulated_notes,simulated_year
+GWL0001,Jaya Arogya Hospital (JAH) & GRMC,SYNTHETIC_DEMO,"24x7 emergency ward functional, resident MO present at night; ICU functional with 8 ventilators; oxygen central line active; specialists available round the clock; Ayushman Bharat accepted",2023
+GWL0002,Birla Institute of Medical Research (BIMR),SYNTHETIC_DEMO,"24x7 emergency ward functional, resident MO present at night; ICU functional with 8 ventilators; oxygen central line active; specialists available round the clock; Ayushman Bharat accepted",2023
+GWL0003,City Care Trauma & Emergency Hospital,SYNTHETIC_DEMO,"Signboard says '24/7 EMERGENCY & ADVANCED TRAUMA SURGERY' on main gate but ward locked after 8pm; no resident doctor on duty at night, only compounder; visiting surgeon comes twice a week on contract; no anaesthetist available on site; ICU room present but oxygen concentrator unplugged and ventilator under repair since 2022",2023
+GWL0004,Kalyan Memorial Hospital,SYNTHETIC_DEMO,"24x7 emergency ward functional, resident MO present at night; ICU functional with 8 ventilators; oxygen central line active; specialists available round the clock; Ayushman Bharat accepted",2023
+GWL0005,Civil Hospital Morar,SYNTHETIC_DEMO,Day emergency and OPD functional; duty doctor available till 6pm; night cases referred to JAH Gwalior; basic pharmacy open,2023
+GWL0006,Cancer Hospital & Research Institute (CHRI),SYNTHETIC_DEMO,"24x7 emergency ward functional, resident MO present at night; ICU functional with 6 ventilators; oxygen central line active; specialists available round the clock; Ayushman Bharat accepted",2023
+GWL0007,Ratan Jyoti Netralaya (RJN),SYNTHETIC_DEMO,Day emergency and OPD functional; duty doctor available till 6pm; night cases referred to JAH Gwalior; basic pharmacy open,2023
+GWL0008,Shri Ram Emergency & Kidney Care,SYNTHETIC_DEMO,"Claims 24x7 emergency and ICU on board; oxygen concentrator unplugged, cylinders empty; duty doctor on call only, phone unreachable; no anesthesiologist or surgeon posted",2023
+GWL0009,Apollo Spectra Hospital Gwalior,SYNTHETIC_DEMO,24x7 emergency functional with on-duty casualty medical officer; resident MS general surgeon on shift; anaesthetist posted 24 hours in hospital campus; major OT functional with central oxygen line and GE anaesthesia station; emergency laparoscopy and appendectomy done regularly; 4 beds currently vacant; blood storage tie-up active,2023
+GWL0010,Boston Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0011,Deep Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0012,Apex Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0013,Govil Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0014,Pulse Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0015,city hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0016,arihant hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0017,Apollo Hospitals,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0018,Sai Shraddha Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0019,Prayas Children Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0020,Sanjeevani Hospital and Research Centre,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working | ICU running with ventilator; general surgeon and anaesthetist available for emergency surgeries,2023
+GWL0021,Global Speciality Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0022,sanjeevani haspitaskl,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0023,Jeevan Jyoti Netralaya Super Speciality Eye Hospital,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working | ICU running with ventilator; general surgeon and anaesthetist available for emergency surgeries,2023
+GWL0024,Soham Hospital and Research Centre Gwalior,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0025,J S Memorial Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0026,Chandra Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0027,Ayushman Neuro Cardio Centre and Shubham Hospital,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0028,Jeevan Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0029,Sanskar hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0030,Sahara Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0031,Navjeevan Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0032,Kalyan Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0033,Kalyan Hospital - Gwalior,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working | ICU running with ventilator; general surgeon and anaesthetist available for emergency surgeries,2023
+GWL0034,Khushal Smriti Hospital,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0035,Suvidha Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0036,Max Care Hospital,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working | ICU running with ventilator; general surgeon and anaesthetist available for emergency surgeries,2023
+GWL0037,Nidaan Heart and Maternity Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0038,Suyash Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0039,Madhavrao District Hospital,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0040,Sarvodaya Hospital and Trauma Unit,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0041,P.N.J. Memorial Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0042,Ashirwad Hospital and Research Centre,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0043,Gauri Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0044,Gupta Hospital and Maternity Home,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0045,Astha Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0046,New Life Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0047,Ishan Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0048,Atishay Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0049,Dubey Orthopaedic and Maternity Nursing Home,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0050,Anand Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0051,Cancer Hospital And Research Institute,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0052,Chandak Hospital,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0053,Olyai Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0054,Care Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0055,Saraf Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0056,Pariwar Hospital Multi Speciality and Research Centre,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0057,Gajra raja medical college,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0058,Gokhale Hospital,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0059,Government Civil Hospital,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0060,Mehra Children Nursing Home,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0061,Archana Healthcare,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0062,Alok Nursing Home,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0063,Maheshwari Nursing Home,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0064,Mangal Nursing Home and Research Centre,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0065,Garg Nursing Home,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0066,Ratan Jyoti Netrayalaya,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0067,Prasad Nursing Home,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0068,Chaudhary Nursing Home,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
+GWL0069,Shivji Bal Chikitsalaya,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0070,Civil Dispensary,SYNTHETIC_DEMO,"emergency 9am-8pm, night doctor on call; part-time specialist visits 2 days a week",2023
+GWL0071,Mundhra Nursing Home,SYNTHETIC_DEMO,claims 24/7 emergency care on board but gate closed at night; ICU equipment disconnected or unplugged; no surgeon or anaesthetist posted,2023
+GWL0072,District Hospital Blood Bank - Gwaliar,SYNTHETIC_DEMO,24x7 emergency functional with resident MBBS doctor; oxygen cylinders + concentrator working,2023
